@@ -50,6 +50,8 @@ This bot demonstrates many of the core features of Botkit:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 var Botkit = require('botkit');
 
+require('dotenv').config();
+
 if (!process.env.token) {
     console.log('Error: Specify a Slack bot token in environment.');
     usage_tip();
@@ -66,7 +68,8 @@ if (!process.env.token) {
 var controller = Botkit.slackbot({
     debug: false,
     retry: 10,
-    studio_token: process.env.studio_token
+    studio_token: process.env.studio_token,
+    json_file_store: 'db'
 });
 
 // Dashbot is a turnkey analytics platform for bots.
